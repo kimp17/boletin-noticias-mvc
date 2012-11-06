@@ -1,0 +1,1 @@
+javac -classpath lib/servlet-api-2.5.jar;lib/commons-logging-1.1.1.jar;war/WEB-INF/lib/spring-webmvc.jar -d war/WEB-INF/classes src/service/*.java src/domain/*.java src/web/*.java

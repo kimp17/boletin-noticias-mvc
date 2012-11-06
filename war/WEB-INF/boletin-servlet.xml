@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ <bean id="periodistaManager" class="boletin.service.SimplePeriodistaManager">
+   <property name="periodistas">
+	 <list>
+	   <ref bean="periodista1"/>
+	   <ref bean="periodista2"/>
+	   <ref bean="periodista3"/>
+	 </list>
+   </property>
+ </bean>
+ <bean id="periodista1" class="boletin.domain.Periodista">
+   <property name="idPeriodista" value="1-1111-1111"/>
+   <property name="nombrePeriodista" value="Pedro Perez"/>
+   <property name="telefonoPeriodista" value="2256-9876"/>
+   <property name="emailPeriodista" value="peper@gmail.com"/>	
+   <property name="ciudadPeriodista" value="Alajuela" />
+ </bean>
+ <bean id="periodista2" class="boletin.domain.Periodista">
+   <property name="idPeriodista" value="2-2222-2222"/>
+   <property name="nombrePeriodista" value="Julia Brenes"/>
+   <property name="telefonoPeriodista" value="2222-2345"/>
+   <property name="emailPeriodista" value="julbren@gmail.com"/>	
+   <property name="ciudadPeriodista" value="Heredia" />
+ </bean>
+ <bean id="periodista3" class="boletin.domain.Periodista">
+   <property name="idPeriodista" value="3-3333-3333"/>
+   <property name="nombrePeriodista" value="Roberto Rodriguez"/>
+   <property name="telefonoPeriodista" value="2456-5678"/>
+   <property name="emailPeriodista" value="robrodri@gmail.com"/>	
+   <property name="ciudadPeriodista" value="San Jose" />
+ </bean>
+ <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   <property name="basename" value="messages"/>
+ </bean>
+ <bean name="/hello.htm" class="boletin.web.PeriodistaController">
+   <property name="periodistaManager" ref="periodistaManager"/>
+ </bean>
+ <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+   <property name="prefix" value="/WEB-INF/jsp/"/>
+   <property name="suffix" value=".jsp"/>
+ </bean>
+</beans>
