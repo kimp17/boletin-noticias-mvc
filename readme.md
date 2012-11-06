@@ -1,3 +1,6 @@
 # Boletin Noticias MVC
 
-Hola mundo  
+Hola mundo 
+
+* Programado en Java
+* para un curso de la UNA  
