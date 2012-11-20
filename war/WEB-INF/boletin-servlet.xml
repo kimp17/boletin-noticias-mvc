@@ -33,13 +33,71 @@
    <property name="emailPeriodista" value="robrodri@gmail.com"/>	
    <property name="ciudadPeriodista" value="San Jose" />
  </bean>
+ <bean id="noticiaManager" class="boletin.service.SimpleNoticiaManager">
+   <property name="noticias">
+	 <list>
+	   <ref bean="noticia1"/>
+	   <ref bean="noticia2"/>
+	 </list>
+   </property>
+ </bean>
+ <bean id="noticia1" class="boletin.domain.Noticia">
+   <property name="idNoticia" value="111"/>
+   <property name="tituloNoticia" value="Cierre de la General Cañas"/>
+   <property name="cuerpoNoticia" value="El paso por la autopista General Cañas se mantendra cerrado hasta el proximo martes."/>
+   <property name="fechaEmisionNoticia" value="16/11/2012"/>	
+   <property name="lugarNoticia" value="Alajuela" />
+   <property name="responsableNoticia" value="1-1111-1111" />
+ </bean>
+ <bean id="noticia2" class="boletin.domain.Noticia">
+   <property name="idNoticia" value="222"/>
+   <property name="tituloNoticia" value="Obama cuatro años mas"/>
+   <property name="cuerpoNoticia" value="El presidente de los Estados Unidos Barack Obama fue relegido por un periodo de 4 años."/>
+   <property name="fechaEmisionNoticia" value="16/11/2012"/>	
+   <property name="lugarNoticia" value="San Jose" />
+   <property name="responsableNoticia" value="1111" />
+ </bean>
+ <bean id="agenciaManager" class="boletin.service.SimpleAgenciaManager">
+   <property name="agencias">
+	 <list>
+	   <ref bean="agencia1"/>
+	 </list>
+   </property>
+ </bean>
+ <bean id="agencia1" class="boletin.domain.Agencia">
+   <property name="idAgencia" value="1111"/>
+   <property name="nombreAgencia" value="AF"/>
+   <property name="paisAgencia" value="Estados Unidos"/>
+   <property name="especialidadAgencia" value="Internacional"/>	
+   <property name="contactoAgencia" value="Manuel Perez" />
+   <property name="telefonoAgencia" value="(879)234-7689" />
+   <property name="emailAgencia" value="af@agencianoticias.com" />
+ </bean>
  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
    <property name="basename" value="messages"/>
  </bean>
- <bean name="/hello.htm" class="boletin.web.PeriodistaController">
+ <bean name="/periodista.htm" class="boletin.web.PeriodistaController">
    <property name="periodistaManager" ref="periodistaManager"/>
  </bean>
- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <bean name="/noticia.htm" class="boletin.web.NoticiaController">
+ 	<property name="noticiaManager" ref="noticiaManager"/>
+ </bean>
+ <bean name="/agencia.htm" class="boletin.web.AgenciaController">
+ 	<property name="agenciaManager" ref="agenciaManager"/>
+ </bean> 
+ <!--<bean name="/addPeriodista.htm" class="boletin.web.AgregarPeriodistaControler">
+ </bean>
+ <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="mappings">
+		<props>
+			<prop key="/addPeriodista.htm">AgregarPeriodistaController</prop>
+		</props>
+	</property>
+ </bean>	
+ <bean id="AgregarPeriodistaController" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value="agregarPeriodista" />
+ </bean>--> 
+ <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
    <property name="prefix" value="/WEB-INF/jsp/"/>
    <property name="suffix" value=".jsp"/>

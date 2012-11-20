@@ -1,0 +1,34 @@
+package boletin.web;
+import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.web.servlet.ModelAndView;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Map;
+import java.util.HashMap;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import boletin.service.AgenciaManager;
+
+public class AgenciaController implements Controller {
+ protected final Log logger = LogFactory.getLog(getClass());
+ private AgenciaManager AgenciaManager;
+
+ public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+   throws ServletException, IOException {
+
+   String now = (new java.util.Date()).toString();
+   logger.info("returning agencia view with " + now);
+
+   Map<String, Object> myModel = new HashMap<String, Object>();
+   myModel.put("now", now);
+   myModel.put("agencias", this.AgenciaManager.getAgencias()) ;
+
+   return new ModelAndView("agenciaView", "model", myModel);
+ }
+ 
+ public void setAgenciaManager(AgenciaManager AgenciaManager) {
+	this.AgenciaManager = AgenciaManager;
+ }
+}

@@ -5,6 +5,7 @@
 </head>
 <body> 
 <h1><fmt:message key="heading"/></h1>
+<h3>Actualizar Periodista</h3>
 <form:form method="post" action="">
     <table>
 		<tr>

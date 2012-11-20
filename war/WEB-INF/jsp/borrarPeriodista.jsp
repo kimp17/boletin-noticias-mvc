@@ -5,32 +5,32 @@
 </head>
 <body> 
 <h1><fmt:message key="heading"/></h1>
-<h3>Agregar Periodista</h3>
+<h3>Eliminar Periodista</h3>
 <form:form method="post" action="">
     <table>
 		<tr>
 			<td>Id:</td>
-			<td><form:input path="idPeriodista"/></td>
+			<td><input type="text" name="idPeriodista" value=""/></td>
 		</tr>
 		<tr>	
 			<td>Nombre</td>
-			<td><form:input path="nombrePeriodista"/></td>
+			<td><input type="text" name="nombrePeriodista" value=""/></td>
 		</tr>
         <tr>		
 			<td>Telefono</td>
-			<td><form:input path="telefonoPeriodista"/></td>
+			<td><input type="text" name="telefonoPeriodista" value=""/></td>
 		</tr>	
 		<tr>
 			<td>Email</td>
-			<td><form:input path="emailPeriodista"/></td>
+			<td><input type="text" name="emailPeriodista" value=""/></td>
 		</tr>
         <tr>		
 			<td>Ciudad</td>
-			<td><form:input path="ciudadPeriodista"/></td>
+			<td><input type="text" name="ciudadPeriodista" value=""/></td>
 		</tr>
 	</table> 
 <br/>
-<a href=""><input type="submit" value="Agregar" /></a>     
+<a href=""><input type="submit" value="Eliminar" /></a>     
 </form:form>
 </body>
 </html>
